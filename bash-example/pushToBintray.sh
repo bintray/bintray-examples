@@ -12,14 +12,15 @@ BINTRAY_REPO=$3
 PCK_NAME=$4
 PCK_VERSION=$(rpm -qp ${RPM} --qf "%{VERSION}")
   
-CURL="curl -u${BINTRAY_USER}:${BINTRAY_API_KEY} -H Content-Type:application/json -H Accept:application/json"
+function main() {
+	CURL="curl -u${BINTRAY_USER}:${BINTRAY_API_KEY} -H Content-Type:application/json -H Accept:application/json"
+	if (check_package_exists); then
+		echo "The package ${PCK_NAME} does not exit. It will be created"
+		create_package
+	fi
 
-if (check_package_exists); then
-	echo "The package ${PCK_NAME} does not exit. It will be created"
-	create_package
-fi
-
-deploy_rpm
+	deploy_rpm
+}
 
 function check_package_exists() {
   echo "Checking if package ${PCK_NAME} exists..."
@@ -59,3 +60,5 @@ function upload_content() {
   echo "RPM ${RPM} uploaded? y:1/N:0 ${package_exists}"
   return ${uploaded}
 }
+
+main "$@"
