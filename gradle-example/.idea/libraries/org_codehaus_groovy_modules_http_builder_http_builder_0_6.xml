@@ -1,0 +1,31 @@
+<component name="libraryTable">
+  <library name="org.codehaus.groovy.modules.http-builder:http-builder:0.6" type="repository">
+    <properties maven-id="org.codehaus.groovy.modules.http-builder:http-builder:0.6" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/http-builder-0.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpclient-4.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpcore-4.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-codec-1.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/json-lib-2.3-jdk15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-beanutils-1.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-collections-3.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-lang-2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ezmorph-1.0.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/groovy-1.8.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/antlr-2.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/asm-3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/asm-commons-3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/asm-tree-3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/asm-util-3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/asm-analysis-3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/nekohtml-1.9.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xercesImpl-2.9.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xml-resolver-1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/http-builder-0.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

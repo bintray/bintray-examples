@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/api.iml" filepath="$PROJECT_DIR$/api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gradle-example.iml" filepath="$PROJECT_DIR$/gradle-example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services.iml" filepath="$PROJECT_DIR$/services.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shared.iml" filepath="$PROJECT_DIR$/shared.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webservice.iml" filepath="$PROJECT_DIR$/webservice.iml" />
+    </modules>
+  </component>
+</project>
+

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="commons-collections-3.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-15/filestore/commons-collections/commons-collections/3.2/jar/f951934aa5ae5a88d7e6dfaa6d32307d834a88be/commons-collections-3.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-15/filestore/commons-collections/commons-collections/3.2/source/73d0340eaecbb0ec9d3e0ace90547ef08cbfaf27/commons-collections-3.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
