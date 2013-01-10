@@ -24,7 +24,7 @@ function main() {
 
 function check_package_exists() {
   echo "Checking if package ${PCK_NAME} exists..."
-  package_exists=`[ $(${CURL} --write-out %{http_code} --silent --output /dev/null -X GET  ${API}/packages/${BINTRAY_USER}/${BINTRAY_REPO}/${PCK_NAME})  -eq ${200} ]`
+  package_exists=`[ $(${CURL} --write-out %{http_code} --silent --output /dev/null -X GET  ${API}/packages/${BINTRAY_USER}/${BINTRAY_REPO}/${PCK_NAME})  -eq 200 ]`
   echo "Package ${PCK_NAME} exists? y:1/N:0 ${package_exists}"   
   return ${package_exists} 
 }
@@ -56,7 +56,7 @@ function deploy_rpm() {
 
 function upload_content() {
   echo "Uploading ${RPM}..."
-  uploaded=` [ $(${CURL} --write-out %{http_code} --silent --output /dev/null -T ${RPM} -H X-Bintray-Package:${PCK_NAME} -H X-Bintray-Version:${PCK_VERSION} ${API}/content/${BINTRAY_USER}/${BINTRAY_REPO}/${RPM}) -eq ${201} ] `
+  uploaded=` [ $(${CURL} --write-out %{http_code} --silent --output /dev/null -T ${RPM} -H X-Bintray-Package:${PCK_NAME} -H X-Bintray-Version:${PCK_VERSION} ${API}/content/${BINTRAY_USER}/${BINTRAY_REPO}/${RPM}) -eq 201 ] `
   echo "RPM ${RPM} uploaded? y:1/N:0 ${package_exists}"
   return ${uploaded}
 }
