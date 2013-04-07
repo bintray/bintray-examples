@@ -6,7 +6,7 @@ import static groovyx.net.http.Method.POST
 
 buildscript {
     repositories {
-        mavenRepo(url: 'http://dl.bintray.com/content/bintray/jcenter')
+        mavenRepo(url: 'http://jcenter.bintray.com')
     }
     dependencies {
         classpath 'org.codehaus.groovy.modules.http-builder:http-builder:0.6'
@@ -47,7 +47,7 @@ subprojects {
     }
 
     repositories {
-        mavenRepo(url: 'http://dl.bintray.com/content/bintray/jcenter')
+        mavenRepo(url: 'http://jcenter.bintray.com')
     }
 
     task createBintrayPackage << {
