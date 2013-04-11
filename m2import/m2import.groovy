@@ -1,4 +1,5 @@
-#!/usr/bin/env groovy
+//uncomment the following line for shell integration. It drives github's language detection crazy
+//#!/usr/bin/env groovy
 
 @GrabResolver(name = 'jcenter', root = 'http://jcenter.bintray.com/') @Grab(group = 'org.codehaus.groovy.modules.http-builder', module = 'http-builder', version = '0.6')
 import groovy.json.JsonSlurper
