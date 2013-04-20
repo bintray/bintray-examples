@@ -76,7 +76,6 @@ subprojects {
           repository(url: "${bintray_api_base_url}/maven/${bintray_username}/${bintray_repo}/${bintray_package}") {
             authentication(userName: bintray_username, password: bintray_api_key)
           }
-          configuration = configurations.detachedConfiguration(dependencies.create('org.apache.maven.wagon:wagon-http:2.4'))
         }
       }
     }
