@@ -69,12 +69,14 @@ subprojects {
         }
     }
 
+    //NOTE: Please use java 1.7 to avoid http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6459815      
     uploadArchives {
       repositories {
         mavenDeployer {
           repository(url: "${bintray_api_base_url}/maven/${bintray_username}/${bintray_repo}/${bintray_package}") {
             authentication(userName: bintray_username, password: bintray_api_key)
           }
+          configuration = configurations.detachedConfiguration(dependencies.create('org.apache.maven.wagon:wagon-http:2.4'))
         }
       }
     }
