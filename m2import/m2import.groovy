@@ -58,11 +58,6 @@ String user = options.us[0]
 String password = options.us[1]
 List<String> inputs = options.is
 
-println "user = $user"
-println "password = $password"
-println "inputs = $inputs"
-println()
-println()
 inputs.each { input ->
     println "Parsing $input"
     final FileReader reader = new FileReader(input)
@@ -132,6 +127,7 @@ inputs.each { input ->
         }
     }
 
+    def counter = 0
     root.eachFileRecurse(FILES) { File file ->
         switch (file.name) {
             case 'pom.xml':
@@ -147,10 +143,14 @@ inputs.each { input ->
                 } as FilenameFilter)
                 files << file
                 files.each { uploadedFile ->
-                    println "uploading $uploadedFile.name"
+                    print "uploading $uploadedFile.name..."
                     bintray.request(PUT, JSON) { req ->
                         uri.path = "/maven/$user/$repository/$packge${(uploadedFile.absolutePath - new File(m2repo).absolutePath).replace(separatorChar, '/' as char)}"
                         req.entity = new FileEntity(uploadedFile)
+                        response.success = {
+                            counter ++
+                            println 'Done.'
+                        }
                         response.'409' = {
                             err.println "WARNING: Conflict - file $uploadedFile.name was already uploaded."
                         }
@@ -162,5 +162,5 @@ inputs.each { input ->
                 }
         }
     }
-    println "Artifacts from $input are successfully uploaded to https://bintray.com/pkg/show/general/$user/$repository/$packge. Don't forget to publish!"
+    println "$counter artifacts from $input were sucessfully uploaded to https://bintray.com/pkg/show/general/$user/$repository/$packge. Don't forget to publish!"
 }
