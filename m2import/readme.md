@@ -24,4 +24,4 @@ The sample input file is the following:
 
 You can find number of sample files in this directory.
 
-Note: organizational repostories aren't currently supported.
+*Note: organizational repostories aren't currently supported.*
