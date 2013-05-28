@@ -23,3 +23,5 @@ The sample input file is the following:
 </code></pre>
 
 You can find number of sample files in this directory.
+
+Note: organizational repostories aren't currently supported.
