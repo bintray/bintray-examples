@@ -1,15 +1,9 @@
-import groovyx.net.http.HTTPBuilder
-
-import static groovyx.net.http.ContentType.JSON
-import static groovyx.net.http.Method.GET
-import static groovyx.net.http.Method.POST
-
 buildscript {
     repositories {
-        mavenRepo(url: 'http://jcenter.bintray.com')
+        jcenter()
     }
     dependencies {
-        classpath 'org.codehaus.groovy.modules.http-builder:http-builder:0.6'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.3'
     }
 }
 
@@ -22,7 +16,8 @@ allprojects {
 
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
+    apply plugin: 'bintray'
 
     sourceCompatibility = 1.7
     targetCompatibility = 1.7
@@ -48,47 +43,44 @@ subprojects {
     }
 
     repositories {
-        mavenRepo(url: 'http://jcenter.bintray.com')
+        jcenter()
     }
 
-    task createBintrayPackage << {
-        def http = getHttpBuilder()
-        http.request(GET, JSON) {
-            uri.path = '/packages/' + bintray_username + '/' + bintray_repo + '/' + bintray_package
-            response.'404' = {
-                http = getHttpBuilder()
-                http.request(POST, JSON) {
-                    uri.path = '/packages/' + bintray_username + '/' + bintray_repo
-                    body = [name: bintray_package, desc: 'auto', desc_url: 'auto', labels: ['gradle', 'example']]
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                if (plugins.hasPlugin('war')) {
+                    from components.web
+                } else {
+                    from components.java
+                }
 
-                    response.success = { resp ->
-                        println 'Created!!!'
-                    }
+                artifact sourcesJar {
+                    classifier "sources"
+                }
+
+                artifact javadocJar {
+                    classifier "javadoc"
                 }
             }
         }
     }
 
-    //NOTE: Please use java 1.7 to avoid http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6459815      
-    uploadArchives {
-      repositories {
-        mavenDeployer {
-          repository(url: "${bintray_api_base_url}/maven/${bintray_username}/${bintray_repo}/${bintray_package}") {
-            authentication(userName: bintray_username, password: bintray_api_key)
-          }
+    bintray {
+        user = bintrayUser //this usually comes form gradle.properties file in ~/.gradle
+        key = bintrayKey //this usually comes form gradle.properties file in ~/.gradle
+        publications = ['mavenJava'] // see publications closure
+        pkg { //package will be created if does not exist
+            repo = 'jbaruch-maven'
+//            userOrg = 'myorg' // an optional organization name when the repo belongs to one of the user's orgs
+            name = 'gradle-example'
+            desc = 'Package created from gradle-example'
+            licenses = ['Apache-2.0']
+            labels = ['jfrog', 'samples']
         }
-      }
     }
-
-    uploadArchives.dependsOn createBintrayPackage
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.5'
-}
-
-def getHttpBuilder() {
-    def http = new HTTPBuilder(bintray_api_base_url)
-    http.auth.basic bintray_username, bintray_api_key
-    return http
+    gradleVersion = '1.10'
 }
