@@ -67,8 +67,8 @@ subprojects {
     }
 
     bintray {
-        user = bintrayUser //this usually comes form gradle.properties file in ~/.gradle
-        key = bintrayKey //this usually comes form gradle.properties file in ~/.gradle
+        user = bintrayUser //this usually comes from gradle.properties file in ~/.gradle
+        key = bintrayKey //this usually comes from gradle.properties file in ~/.gradle
         publications = ['mavenJava'] // see publications closure
         pkg { //package will be created if does not exist
             repo = 'jbaruch-maven'
