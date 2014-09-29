@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:0.5"
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:0.6"
     }
 }
 
@@ -58,9 +58,7 @@ allprojects {
             }
         }
     }
-    
 }
-
 
 subprojects {
     apply plugin: 'maven'
@@ -83,7 +81,6 @@ subprojects {
             from javadoc.destinationDir
         }
 
-
         // Add the sourceJars to non-extractor modules
         artifacts {
             published sourceJar
@@ -95,9 +92,6 @@ subprojects {
 configurations {
     published
 }
-
-
-
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.0'
