@@ -55,13 +55,8 @@ subprojects {
                     from components.java
                 }
 
-                artifact sourcesJar {
-                    classifier "sources"
-                }
-
-                artifact javadocJar {
-                    classifier "javadoc"
-                }
+                artifact sourcesJar 
+                artifact javadocJar
             }
         }
     }
