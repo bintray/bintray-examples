@@ -12,7 +12,7 @@ BINTRAY_REPO=$3
 PCK_NAME=$4
 PCK_VERSION=$(rpm -qp ${RPM} --qf "%{VERSION}")
 
-function main() {
+main() {
   CURL="curl -u${BINTRAY_USER}:${BINTRAY_API_KEY} -H Content-Type:application/json -H Accept:application/json"
   if (check_package_exists); then
     echo "The package ${PCK_NAME} does not exit. It will be created"
@@ -22,14 +22,14 @@ function main() {
   deploy_rpm
 }
 
-function check_package_exists() {
+check_package_exists() {
   echo "Checking if package ${PCK_NAME} exists..."
   package_exists=`[ $(${CURL} --write-out %{http_code} --silent --output /dev/null -X GET  ${API}/packages/${BINTRAY_USER}/${BINTRAY_REPO}/${PCK_NAME})  -eq 200 ]`
   echo "Package ${PCK_NAME} exists? y:1/N:0 ${package_exists}"
   return ${package_exists}
 }
 
-function create_package() {
+create_package() {
   echo "Creating package ${PCK_NAME}..."
   if [ -f "${PACKAGE_DESCRIPTOR}" ]; then
     data="@${PACKAGE_DESCRIPTOR}"
@@ -45,7 +45,7 @@ function create_package() {
   ${CURL} -X POST -d "${data}" ${API}/packages/${BINTRAY_USER}/${BINTRAY_REPO}
 }
 
-function deploy_rpm() {
+deploy_rpm() {
   if (upload_content); then
     echo "Publishing ${RPM}..."
     ${CURL} -X POST ${API}/content/${BINTRAY_USER}/${BINTRAY_REPO}/${PCK_NAME}/${PCK_VERSION}/publish -d "{ \"discard\": \"false\" }"
@@ -54,7 +54,7 @@ function deploy_rpm() {
   fi
 }
 
-function upload_content() {
+upload_content() {
   echo "Uploading ${RPM}..."
   uploaded=` [ $(${CURL} --write-out %{http_code} --silent --output /dev/null -T ${RPM} -H X-Bintray-Package:${PCK_NAME} -H X-Bintray-Version:${PCK_VERSION} ${API}/content/${BINTRAY_USER}/${BINTRAY_REPO}/${RPM}) -eq 201 ] `
   echo "RPM ${RPM} uploaded? y:1/N:0 ${package_exists}"
