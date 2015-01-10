@@ -57,7 +57,7 @@ deploy_rpm() {
 upload_content() {
   echo "Uploading ${RPM}..."
   uploaded=` [ $(${CURL} --write-out %{http_code} --silent --output /dev/null -T ${RPM} -H X-Bintray-Package:${PCK_NAME} -H X-Bintray-Version:${PCK_VERSION} ${API}/content/${BINTRAY_USER}/${BINTRAY_REPO}/${RPM}) -eq 201 ] `
-  echo "RPM ${RPM} uploaded? y:1/N:0 ${package_exists}"
+  echo "RPM ${RPM} uploaded? y:1/N:0 ${uploaded}"
   return ${uploaded}
 }
 
