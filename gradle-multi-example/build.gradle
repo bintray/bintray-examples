@@ -27,7 +27,6 @@ allprojects {
 
     ext.publish = true
     bintray {
-        apiUrl = "https://api.bintray.net"
         user = bintray_net_user
         key = bintray_net_key
         configurations = ['published', 'archives']
