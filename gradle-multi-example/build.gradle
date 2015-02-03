@@ -27,8 +27,8 @@ allprojects {
 
     ext.publish = true
     bintray {
-        user = bintray_net_user
-        key = bintray_net_key
+        user = bintray_user
+        key = bintray_key
         configurations = ['published', 'archives']
         //publications = ['published']
         filesSpec {
