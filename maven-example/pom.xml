@@ -49,7 +49,7 @@
     <distributionManagement>
         <repository>
             <id>bintray-repo-maven-example</id>
-            <url>https://api.bintray.com/maven/${bintray.repo}/${bintray.package}</url>
+            <url>https://api.bintray.com/maven/${bintray.subject}/${bintray.repo}/${bintray.package}</url>
         </repository>
     </distributionManagement>
 </project>
