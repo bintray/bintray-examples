@@ -1,0 +1,59 @@
+buildscript {
+  repositories {
+        jcenter()
+   }
+}
+
+plugins {
+    id "com.jfrog.bintray" version "1.2"
+}
+
+allprojects {
+	repositories {
+		jcenter()
+	}
+	apply plugin: 'maven'
+	apply plugin: 'maven-publish'
+	apply plugin: 'java'
+  
+	group = 'org.jfrog.example.gradle'
+	version = '1.0'
+	status = 'integration'
+}
+
+publishing {
+	publications {
+		MyPublication(MavenPublication) {
+			from components.java
+			groupId 'org.jfrog.example.gradle'
+            		artifactId 'gradle-bintray-plugin-example'
+            		version '1.0'
+		}
+	}
+}
+
+bintray {	
+	user = System.getenv('BINTRAY_USER')
+	key = System.getenv('BINTRAY_KEY')
+	publications = ['MyPublication']
+	pkg {
+		repo = 'generic'
+		name = 'gradle-bintray-plugin-example'
+		userOrg = user
+		licenses = ['Apache-2.0']
+		vcsUrl = 'https://github.com/bintray/gradle-bintray-plugin.git'
+		labels = ['gear', 'gore', 'gorilla']
+		publicDownloadNumbers = true
+		attributes= ['a': ['ay1', 'ay2'], 'b': ['bee'], c: 'cee'] //Optional package-level attributes
+		version {
+			name = '1.0-Final'
+			desc = 'Gradle Bintray Plugin 1.0 final'
+			vcsTag = '1.3.0'
+			attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+		}
+	}
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.4'
+}
