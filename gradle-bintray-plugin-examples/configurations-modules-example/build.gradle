@@ -42,9 +42,9 @@ subprojects {
 	}
 }
 
-bintray {	
-	user = System.getenv('BINTRAY_USER')
-	key = System.getenv('BINTRAY_KEY')
+bintray {
+	user = project.hasProperty('bintrayUser') ? project.hasProperty('bintrayUser') : System.getenv('BINTRAY_USER')
+	key = project.hasProperty('bintrayApiKey') ? project.hasProperty('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
 	configurations = ['archives']
 	pkg {
 		repo = 'generic'
