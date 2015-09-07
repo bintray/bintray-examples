@@ -2,9 +2,8 @@
 *.ipr
 *.iws
 *.iml
-/build
-/*/build
-/*/out
+.idea
+build
 out
 _ReSharper*
 bin
