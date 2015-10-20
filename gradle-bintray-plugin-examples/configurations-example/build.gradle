@@ -45,10 +45,10 @@ bintray {
 		licenses = ['Apache-2.0']
 		vcsUrl = 'https://github.com/bintray/gradle-bintray-plugin.git'
 		version {
-		name = '1.0-Final'
-		desc = 'Gradle Bintray Plugin 1.0 final'
-		vcsTag = '1.3.0'
-		attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+			name = '1.0-Final'
+			desc = 'Gradle Bintray Plugin 1.0 final'
+			vcsTag = '1.3.0'
+			attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
 		}	
 	}
 }
