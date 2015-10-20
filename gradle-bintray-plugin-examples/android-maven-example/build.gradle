@@ -74,7 +74,7 @@ install {
 
 			packaging 'aar'
 			groupId 'pub.devrel'
-			artifactId 'adndroid-maven-example'
+			artifactId 'android-maven-example'
 			version '0.1'
 
 			licenses {

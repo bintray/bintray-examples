@@ -23,9 +23,9 @@ Gradle project with a few modules that uploads arbitrary files from a specific f
 ### android-maven-example
 Gradle project with one module, that builds aar and pom artifacts using the android-maven Gradle plugin
 and uploads them to Bintray.
-Before running this example, please make sure to configure the android closure in the build.gradle file
-with your Android SDK versions according to the instructions
-in the [Android Developers Guide](https://developer.android.com/tools/building/configuring-gradle.html).
+Before running this example, please make sure you:
+* Set the *ANDROID_HOME* environment variable to point to the Android SDK directory.
+* Configure the *android* closure in the build.gradle file with your Android SDK versions according to the instructions in the [Android Developers Guide](https://developer.android.com/tools/building/configuring-gradle.html).
 
 ## Running the example projects
 To run one of the above example projects, please follow the following steps.
