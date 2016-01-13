@@ -21,7 +21,7 @@ buildscript {
 }
 
 plugins {
-    id "com.jfrog.bintray" version "1.4"
+    id "com.jfrog.bintray" version "1.5"
 }
 
 group = 'org.jfrog.example.gradle'
