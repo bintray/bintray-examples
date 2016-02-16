@@ -1,0 +1,14 @@
+.gradle
+*.ipr
+*.iws
+*.iml
+.idea
+build
+out
+_ReSharper*
+bin
+obj
+*.suo
+*.user
+packages
+*.tmp

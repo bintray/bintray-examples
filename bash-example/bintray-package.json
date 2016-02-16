@@ -1,0 +1,6 @@
+{
+    "name": "bash-example",
+    "desc": "Bash sample script which interacts with Bintray...",
+    "desc_url": "https://github.com/JFrogDev/bintray-examples/README.md",
+    "labels": ["bash", "example"]    
+}

@@ -1,0 +1,116 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+    }
+}
+
+allprojects {
+    apply plugin: 'idea'
+
+    group = 'org.jfrog.example.bintray.gradle'
+    version = '1.2-gradle-publish'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+    apply plugin: 'com.jfrog.bintray'
+
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+
+    dependencies {
+        testCompile 'junit:junit:4.7'
+    }
+
+    // custom tasks for creating source/javadoc jars
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from javadoc.destinationDir
+    }
+
+    // add javadoc/source jar tasks as artifacts
+    artifacts {
+        archives sourcesJar, javadocJar
+    }
+
+    repositories {
+        jcenter()
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                if (plugins.hasPlugin('war')) {
+                    from components.web
+                } else {
+                    from components.java
+                }
+
+                artifact sourcesJar 
+                artifact javadocJar
+            }
+        }
+    }
+
+    bintray {
+        user = bintray_user //this usually comes from gradle.properties file in ~/.gradle
+        key = bintray_api_key //this usually comes from gradle.properties file in ~/.gradle
+
+//        configurations = ['deployables'] //When uploading configuration files
+        // - OR -
+        publications = ['mavenJava'] //When uploading Maven-based publication files
+        // - AND/OR -
+//        filesSpec { //When uploading any arbitrary files ('filesSpec' is a standard Gradle CopySpec)
+//            from 'arbitrary-files'
+//            into 'standalone_files/level1'
+//            rename '(.+)\\.(.+)', '$1-suffix.$2'
+//        }
+        dryRun = false //Whether to run this as dry-run, without deploying
+        publish = true //If version should be auto published after an upload
+        pkg {
+//            repo = 'myrepo'
+            repo = 'jbaruch-maven'
+//            userOrg = 'myorg' //An optional organization name when the repo belongs to one of the user's orgs
+            name = 'gradle-example'
+            desc = 'what a fantastic package indeed!'
+            websiteUrl = 'https://github.com/bintray/bintray-examples'
+            issueTrackerUrl = 'https://github.com/bintray/bintray-examples/issues'
+            vcsUrl = 'https://github.com/bintray/bintray-examples.git'
+            licenses = ['Apache-2.0']
+            labels = ['example', 'gradle', 'bintray']
+            publicDownloadNumbers = true
+            attributes= ['a': ['ay1', 'ay2'], 'b': ['bee'], c: 'cee'] //Optional package-level attributes
+            //Optional version descriptor
+            version {
+                name = project.version //Bintray logical version name
+                desc = 'optional, version-specific description'
+//                released  = 'optional, date of the version release' //2 possible values: date in the format of 'yyyy-MM-dd'T'HH:mm:ss.SSSZZ' OR a java.util.Date instance
+//                vcsTag = '1.3.0'
+//                attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin'] //Optional version-level attributes
+//                gpg {
+//                    sign = true //Determines whether to GPG sign the files. The default is false
+//                    passphrase = 'passphrase' //Optional. The passphrase for GPG signing'
+//                }
+                mavenCentralSync {
+                    sync = false //Optional (true by default). Determines whether to sync the version to Maven Central.
+                    user = 'userToken' //OSS user token
+                    password = 'paasword' //OSS user password
+                    close = '1' //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
+                }
+            }
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2.1'
+}

@@ -1,0 +1,14 @@
+{
+    "bintray": {
+        "repo": "jbaruch-maven",
+        "package": "org.apache.wicket"
+    },
+    "maven": {
+        "localRepoPath": "/data/maven/repository", //optional, ~/.m2/repository will be used
+        "group": {
+            "groupId": "org.apache.wicket",
+            "artifactIds": ["wicket-core","wicket-utils"], //optional, everything will be imported
+            "versions": ["1.5.2","1.5.3"] //optional, all the versions will be imported
+        }
+    }
+}

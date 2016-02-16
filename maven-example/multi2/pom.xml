@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>multi2</artifactId>
+    <packaging>jar</packaging>
+    <name>Multi 2</name>
+
+    <parent>
+        <groupId>org.jfrog.example.bintray.maven</groupId>
+        <artifactId>multi</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.scriptbasic</groupId>
+            <artifactId>jscriptbasic</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jnape.dynamic-collections</groupId>
+            <artifactId>dynamic-collections</artifactId>
+            <version>1.2.9</version>
+        </dependency>
+    </dependencies>
+
+</project>

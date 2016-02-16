@@ -1,0 +1,11 @@
+{
+    "bintray": {
+        "repo": "jbaruch-maven",
+        "package": "org.apache.wicket"
+    },
+    "maven": {
+        "group": {
+            "groupId": "org.apache.wicket"
+        }
+    }
+}
