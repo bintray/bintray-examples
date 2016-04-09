@@ -14,7 +14,7 @@ Gradle project with a few modules that uses the archives Configuration by applyi
 It adds the bintray closure with the mandatory bintray configuration parameters as well as pkg and version configuration to upload artifacts into Bintray.
 
 ### publications-example
-Gradle project with one module that adds maven Publications to the grale script.
+Gradle project with one module that adds maven Publications to the gradle script.
 It adds the publications defined into the bintray closure with the mandatory bintray configuration parameters as well as pkg and version configuration to upload artifacts into Bintray.
 
 ### filesSpec-example
