@@ -41,7 +41,7 @@ Locate your API Key under Edit Your Profile -> API Key
 
 #### Step 4:
 Configure your example project to use your Bintray user and API key.
-You can do that using one of the following methods:
+You can do that by using one of the following methods:
 * In the project's *gradle.properties* file, set the values of the *bintrayUser* and *bintrayApiKey* properties to your Bintray user and API key.
 * Alternatively, you can set the values of the *BINTRAY_USER* and *BINTRAY_API_KEY* environment variables to your Bintray user and API key.
 * Another option is to send your Bintray user and API key as project properties when running your build from the command line:
@@ -56,9 +56,9 @@ CD to the project's root directory (the directory which includes the *build.grad
 
 or with the gradle wrapper in Unix
 
-> ./gradlew build bintrayUpload
+> ./gradlew build bintrayUpload --info
 
 and the gradle wrapper in Windows
 
-> gradlew.bat build bintrayUpload
+> gradlew.bat build bintrayUpload --info
 ```
