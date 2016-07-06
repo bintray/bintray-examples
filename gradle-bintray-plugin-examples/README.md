@@ -52,7 +52,7 @@ You can do that by using one of the following methods:
 #### Step 5:
 CD to the project's root directory (the directory which includes the *build.gradle* file) and run the build as follows:
 ```console
-> gradle build bintrayUpload
+> gradle build bintrayUpload --info
 
 or with the gradle wrapper in Unix
 
