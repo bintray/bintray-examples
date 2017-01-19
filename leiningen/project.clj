@@ -2,14 +2,20 @@
 (defproject cloj-bintray "1.0.0"
   ;; ...
   :deploy-repositories
-  [["releases"
-    {:url "https://api.bintray.com/maven/:subject/:repo/:package/"
+ [
+   ["releases"
+    {:url "https://api.bintray.com/maven/:subject/:repo/:package"
      :sign-releases false
-     :username "<bintray_user>"
-     :password "<bintray_api_key>}]
+     :username "username"
+     :password "apiKey"
+    }
+   ]
    ["snapshots"
-    {:url "https://api.bintray.com/maven/:subject/:repo/:package/"
-     :username "<bintray_user>"
-     :password "<bintray_api_key>}]]
+    {:url "https://api.bintray.com/maven/:subject/:repo/:package"
+     :username "username"
+     :password "apiKey"
+    }
+   ]
+ ]
   ;; ...
   :profiles {:dev {:source-paths ["dev"]}})
