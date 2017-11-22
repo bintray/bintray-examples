@@ -21,11 +21,22 @@ It adds the publications defined into the bintray closure with the mandatory bin
 Gradle project with a few modules that uploads arbitrary files from a specific folder to bintray using filesSpec.
 
 ### android-maven-example
-Gradle project with one module, that builds aar and pom artifacts using the android-maven Gradle plugin
-and uploads them to Bintray.
+Gradle project with one module, that builds aar and pom artifacts using the android-maven Gradle plugin and uploads them to Bintray.
+
 Before running this example, please make sure you:
+
 * Set the *ANDROID_HOME* environment variable to point to the Android SDK directory.
+
 * Configure the *android* closure in the build.gradle file with your Android SDK versions according to the instructions in the [Android Developers Guide](https://developer.android.com/tools/building/configuring-gradle.html).
+
+###  android-gradle-3.0.0-maven-example
+Android project with a single library module with some dependencies, using `com.android.tools.build:gradle:3.0.0` with the `implementation` dependency declaration.
+
+To show an example of organising gradle logic, all of the relevant maven/bintray configuration is in `app/publish.gradle`.
+
+Before running this example, please make sure you:
+
+* Set the ANDROID_HOME environment variable to point to the Android SDK directory.
 
 ## Running the example projects
 To run one of the above example projects, please follow the following steps.
@@ -34,31 +45,33 @@ To run one of the above example projects, please follow the following steps.
 [Sign up](https://bintray.com/docs/usermanual/working/working_allaboutjoiningbintraysigningupandloggingin.html) to [Bintray](https://bintray.com/).
 
 #### Step 2:
-Make sure you have a repository named *generic*.
+Make sure you have a repository named *generic* or *maven*, depending on the example you're running (found in `bintray.pkg.repo`).
 
 #### Step 3:
-Locate your API Key under Edit Your Profile -> API Key
+Locate your API Key under Edit Your Profile > API Key
 
 #### Step 4:
 Configure your example project to use your Bintray user and API key.
 You can do that by using one of the following methods:
+
 * In the project's *gradle.properties* file, set the values of the *bintrayUser* and *bintrayApiKey* properties to your Bintray user and API key.
-* Alternatively, you can set the values of the *BINTRAY_USER* and *BINTRAY_API_KEY* environment variables to your Bintray user and API key.
+
+* Alternatively, you can set the values of the *BINTRAY_USER* and *BINTRAY\_API\_KEY* environment variables to your Bintray user and API key.
+
 * Another option is to send your Bintray user and API key as project properties when running your build from the command line:
- ```console
- > gradle build bintrayUpload -PbintrayUser=<my user> -PbintrayApiKey=<my key>
-```
+
+ `gradle build bintrayUpload -PbintrayUser=<my user> -PbintrayApiKey=<my key>`
 
 #### Step 5:
-CD to the project's root directory (the directory which includes the *build.gradle* file) and run the build as follows:
-```console
-> gradle build bintrayUpload --info
+
+Navigate to the project's root directory (the directory which includes the top level `build.gradle` file) and run the build as follows:
+
+`gradle build bintrayUpload --info`
 
 or with the gradle wrapper in Unix
 
-> ./gradlew build bintrayUpload --info
+`./gradlew build bintrayUpload --info`
 
 and the gradle wrapper in Windows
 
-> gradlew.bat build bintrayUpload --info
-```
+`gradlew.bat build bintrayUpload --info`
