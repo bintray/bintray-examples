@@ -1,4 +1,4 @@
-The full Travis-CI Bintray Deployment documentaion is available [here](https://docs.travis-ci.com/user/deployment/bintray)
+The full Travis-CI Bintray Deployment documentation is available [here](https://docs.travis-ci.com/user/deployment/bintray)
 
 This is a basic Maven project that is deployed to Bintray using the Bintray provider of the [dpl] (https://github.com/travis-ci/dpl#bintray)
 
