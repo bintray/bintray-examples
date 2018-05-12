@@ -10,7 +10,7 @@ libraryDependencies ++= Seq(
 
   resolvers += Resolver.jcenterRepo
 
-  publishTo := Some("Bintray API Realm" at "https://api.bintray.com/content/:subject/:repo/:package/:version")
+  publishTo := Some("Bintray API Realm" at "https://api.bintray.com/content/:subject/:repo/:package/:version;publish=1")
 
   credentials += Credentials(new File("credentials.properties"))
 
