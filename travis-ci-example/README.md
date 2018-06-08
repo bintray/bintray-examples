@@ -1,6 +1,6 @@
 The full Travis-CI Bintray Deployment documentation is available [here](https://docs.travis-ci.com/user/deployment/bintray)
 
-This is a basic Maven project that is deployed to Bintray using the Bintray provider of the [dpl] (https://github.com/travis-ci/dpl#bintray)
+This is a basic Maven project that is deployed to Bintray using the Bintray provider of the [dpl](https://github.com/travis-ci/dpl#bintray)
 
 It first builds the project by running 'mvn install' and uses the .travis.yml descriptor file to trigger the Bintray deployment using the dpl:
 
@@ -17,5 +17,4 @@ deploy:
   
 ```
 
-**DO NOT expose your Bintray API Key. Please use the Travis CLI to encrypt your API Key, as explained [here] (https://docs.travis-ci.com/user/deployment/bintray#Encrypt-your-API-key).**
-  
+**DO NOT expose your Bintray API Key. Please use the Travis CLI to encrypt your API Key, as explained [here](https://docs.travis-ci.com/user/deployment/bintray#Encrypt-your-API-key).**
